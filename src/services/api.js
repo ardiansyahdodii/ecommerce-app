@@ -6,3 +6,9 @@ export const getAllProduct = () => {
     return getAllProduct
 
 }
+
+export const getProductByCategory = (category) => {
+    const getProductByCategory = axios.get(`https://fakestoreapi.com/products/category/${category}`)
+
+    return getProductByCategory
+}

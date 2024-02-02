@@ -3,9 +3,8 @@ import { Button } from './elements/Button'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const Header = ({setSearch}) => {
+export const Header = ({setSearch, isCartActive, setIsCartActive}) => {
     const [searchType, setSearchType] = useState('')
-    // const [search, setSearch] = useState('')
     const [isLogin, setIsLogin] = useState(false)
     
     const navigate = useNavigate()
@@ -36,8 +35,8 @@ export const Header = ({setSearch}) => {
                 </form>
             </div>
             <div className='flex items-center space-x-3'>
-                <div className='relative'>
-                    <FaCartArrowDown className='text-3xl mr-3' />
+                <div className='relative cursor-pointer'  onClick={() => setIsCartActive(!isCartActive)}>
+                    <FaCartArrowDown className='text-3xl mr-3'/>
                     <div className='absolute -bottom-2 right-1 bg-red-600 rounded-full w-5 h-5'>
                         <p className='text-center text-sm font-bold'>10</p>
                     </div>

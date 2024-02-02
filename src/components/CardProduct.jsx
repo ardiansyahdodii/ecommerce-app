@@ -1,9 +1,8 @@
 import React from 'react'
 import { FaCartPlus } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 export const CardProduct = (props) => {
-
-    const text = 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday'
 
     return (
         <div className='relative p-2 border-2'>
@@ -12,7 +11,7 @@ export const CardProduct = (props) => {
                     <img src={props.image} alt="" width={120} height={120} className='object-cover self-center ' />
                 </div>
                 <div className='p-3'>
-                    <h3 className='text-xl font-semibold'>{props.title}</h3>
+                    <Link to={`/product/${props.id}`} className='text-xl font-semibold hover:text-gray-700'>{props.title}</Link>
                     <p className='mt-3'>{String(props.description).substring(0, 50) + ' ...'}</p>
                     <div className='flex justify-between items-center mt-3'>
                         <p className='text-lg font-semibold'>$ {props.price}</p>

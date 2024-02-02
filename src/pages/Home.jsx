@@ -48,7 +48,7 @@ export const Home = () => {
             </div>
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5'>
                 {products.map((product) => (
-                    <CardProduct key={product.id} title={product.title} description={product.description} price={product.price} image={product.image} rating={product.rating.rate} />
+                    <CardProduct key={product.id} id={product.id} title={product.title} description={product.description} price={product.price} image={product.image} rating={product.rating.rate} />
                 ))}
             </div>
         </div>

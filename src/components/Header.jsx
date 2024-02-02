@@ -1,27 +1,28 @@
 import { FaCartArrowDown, FaShoppingCart } from 'react-icons/fa'
 import { Button } from './elements/Button'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-export const Header = () => {
+export const Header = ({setSearch}) => {
     const [searchType, setSearchType] = useState('')
-    const [search, setSearch] = useState('')
-
-    useEffect(() => {
-        console.log(search)
-    }, [search])
+    // const [search, setSearch] = useState('')
+    const [isLogin, setIsLogin] = useState(false)
+    
+    const navigate = useNavigate()
 
     const handleSubmitSearch = (event) => {
         event.preventDefault()
         setSearch(searchType)
+        navigate('/product/search')
     }
 
     // console.log(search)
     return (
         <div className='flex justify-between p-5 border-b-[1px] shadow-sm'>
-            <div className='flex justify-center items-center'>
+            <Link to='/' className='flex justify-center items-center'>
                 <h1 className="text-3xl font-bold">DooShop</h1>
                 <FaShoppingCart className="text-3xl font-bold" />
-            </div>
+            </Link>
             <div>
                 <form onSubmit={handleSubmitSearch} className='flex space-x-3'>
                     <input
@@ -35,9 +36,18 @@ export const Header = () => {
                 </form>
             </div>
             <div className='flex items-center space-x-3'>
-                <FaCartArrowDown className='text-2xl mr-3' />
-                <Button text="Login" />
-                <Button text="Register" />
+                <div className='relative'>
+                    <FaCartArrowDown className='text-3xl mr-3' />
+                    <div className='absolute -bottom-2 right-1 bg-red-600 rounded-full w-5 h-5'>
+                        <p className='text-center text-sm font-bold'>10</p>
+                    </div>
+                </div>
+                {isLogin ? <Button text="Logout" /> :
+                    (
+                        <div className='flex space-x-3'>
+                            <Button text="Login" />
+                            <Button text="Register" />
+                        </div>)}
             </div>
         </div>
     )

@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const SearchProduct = () => {
+export const SearchProduct = ({search}) => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        
+    })
     return (
-        <div>SearchProduct</div>
+        <div>
+            <h3>keyword : {search}</h3>
+        </div>
     )
 }

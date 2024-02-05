@@ -10,7 +10,7 @@ import { SideCart } from './components/SideCart'
 const App = () => {
   const [search, setSearch] = useState('')
   const [isCartActive, setIsCartActive] = useState(false)
-  const [carts, setCarts] = useState([])
+  // const [carts, setCarts] = useState([])
 
 
   // console.log(search);
@@ -20,13 +20,13 @@ const App = () => {
       <div className='relative'>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/product' element={<Home carts={carts} setCarts={setCarts}/>} />
+          <Route path='/product' element={<Home />} />
           <Route path='/product/:productId' element={<DetailProduct />} />
           <Route path='/product/search' element={<SearchProduct search={search} />} />
           {/* <Route path='/cart' element={<Cart />} /> */}
         </Routes>
         {/* <div className='absolute top-0 right-0'> */}
-          <SideCart isCartActive={isCartActive} carts={carts}/>
+          <SideCart isCartActive={isCartActive} />
         {/* </div> */}
       </div>
       <Footer />

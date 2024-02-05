@@ -1,25 +1,16 @@
 import React, { useState } from 'react'
 import { FaCartPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { useCartStore } from '../store/cartStore'
 
 // import { useCartStore } from '../store/cartStore'
 // import { useProductStore } from '../store/productStore'
 
 export const CardProduct = (props) => {
-    const { product, carts, setCarts } = props
-    // const [carts, setCarts] = useState([])
-    // const { addToCart } = useCartStore()
-    // const { product } = useProductStore()
-    const addToCart = (product, id) => {
-        if (carts.find(cart => (cart.id === id))) {
-            setCarts(carts.map(cart => (
-                cart.id === id ? { ...cart, quantity: cart.quantity + 1 } : cart)))
-        } else {
-            setCarts([...carts, { ...product, quantity: 1 }])
-        }
-    }
+    const { product } = props
+    const {addToCart } = useCartStore()
 
-    console.log(carts)
+    // console.log(carts)
     return (
         <div className='relative p-2 border-2'>
             <div className='flex flex-col items-center'>

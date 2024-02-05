@@ -1,7 +1,7 @@
 import React from 'react'
 import { CartItem } from './CartItem'
 
-export const SideCart = ({ isCartActive }) => {
+export const SideCart = ({ isCartActive, carts }) => {
     return (
         <div className={`${isCartActive ? 'translate-x-0' : `translate-x-full w-0`} absolute top-0 right-0 w-2/6 transition-all ease-in-out duration-700 bg-white border-l-2 h-full`}>
             <div className={`${isCartActive ? 'block' : 'hidden'} p-3`}>
@@ -11,10 +11,13 @@ export const SideCart = ({ isCartActive }) => {
                     </h1>
                 </div>
                 <div>
+                    {carts.map(cart => (
+                        <CartItem key={cart.id} cart={cart} />
+                    ))}
+                    {/* <CartItem />
                     <CartItem />
                     <CartItem />
-                    <CartItem />
-                    <CartItem />
+                    <CartItem /> */}
                 </div>
             </div>
         </div>

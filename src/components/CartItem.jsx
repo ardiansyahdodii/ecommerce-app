@@ -2,24 +2,24 @@ import React from 'react'
 import { Button } from './elements/Button'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 
-export const CartItem = () => {
+export const CartItem = ({ cart }) => {
     return (
         <div className='flex justify-between items-center border-b-2 p-2 space-x-3 text-black'>
-            <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="" width={75} />
+            <img src={cart.image} alt="" width={75} />
             <div>
                 <div className='flex space-x-3'>
-                    <h1 className='text-lg font-semibold'>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h1>
+                    <h1 className='text-lg font-semibold'>{cart.title}</h1>
                 </div>
                 <div className='flex justify-between items-center mt-3'>
                     <div className='flex items-center space-x-3'>
                         <FaMinus className='text-xl border-2 p-1 hover:bg-red-600' />
                         <div className='flex justify-center items-center'>
-                            1
+                            {cart.quantity}
                         </div>
                         <FaPlus className='text-xl border-2 p-1 hover:bg-blue-600' />
                     </div>
                     <div>
-                        $ 100
+                        {cart.price}
                     </div>
                     <div>
                         $ 200

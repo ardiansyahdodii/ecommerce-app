@@ -6,7 +6,7 @@ import { useCartStore } from '../store/cartStore'
 export const CartItem = ({cart}) => {
     const {increseCart, decreseCart, removeCart } = useCartStore()
 
-    
+    console.log(cart);
     return (
         <div className='flex justify-between items-center border-b-2 p-2 space-x-3 text-black'>
             <img src={cart.image} alt="" width={75} />
@@ -23,10 +23,10 @@ export const CartItem = ({cart}) => {
                         <FaPlus className='text-xl border-2 p-1 hover:bg-blue-600' onClick={() => increseCart(cart.id)} />
                     </div>
                     <div>
-                        {cart.price}
+                        $ {cart.price}
                     </div>
                     <div>
-                        $ 200
+                        $ {cart.price * cart.quantity}
                     </div>
                 </div>
             </div>

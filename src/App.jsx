@@ -26,7 +26,7 @@ const App = () => {
           {/* <Route path='/cart' element={<Cart />} /> */}
         </Routes>
         {/* <div className='absolute top-0 right-0'> */}
-          <SideCart isCartActive={isCartActive} />
+          <SideCart isCartActive={isCartActive} setIsCartActive={setIsCartActive}/>
         {/* </div> */}
       </div>
       <Footer />

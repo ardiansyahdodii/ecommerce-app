@@ -2,10 +2,12 @@ import { FaCartArrowDown, FaShoppingCart } from 'react-icons/fa'
 import { Button } from './elements/Button'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useCartStore } from '../store/cartStore'
 
 export const Header = ({setSearch, isCartActive, setIsCartActive}) => {
     const [searchType, setSearchType] = useState('')
     const [isLogin, setIsLogin] = useState(false)
+    const {totalItem} = useCartStore()
     
     const navigate = useNavigate()
 
@@ -38,7 +40,7 @@ export const Header = ({setSearch, isCartActive, setIsCartActive}) => {
                 <div className='relative cursor-pointer'  onClick={() => setIsCartActive(!isCartActive)}>
                     <FaCartArrowDown className='text-3xl mr-3'/>
                     <div className='absolute -bottom-2 right-1 bg-red-600 rounded-full w-5 h-5'>
-                        <p className='text-center text-sm font-bold'>10</p>
+                        <p className='text-center text-sm font-bold'>{totalItem}</p>
                     </div>
                 </div>
                 {isLogin ? <Button text="Logout" /> :

@@ -2,6 +2,8 @@ import { create } from 'zustand'
 
 export const useCartStore = create((set) => ({
     carts: [],
+    totalPrice: 0,
+    totalItem: 0,
 
     addToCart: (product, id) => {
         set((state) => ({
@@ -24,4 +26,12 @@ export const useCartStore = create((set) => ({
     clearCart: () => set((state) => ({
         carts: []
     })),
+
+    changeTotalPrice: () => set((state) => ({
+        totalPrice: state.carts.reduce((total, cart) => total + (cart.price * cart.quantity), 0)
+    })),
+    
+    changeTotalItem: () => set((state) => ({
+        totalItem: state.carts.reduce((total, cart) => total + cart.quantity, 0)
+    }))
 }))
